@@ -22,8 +22,10 @@ app.use(bodyParser.json());
 
 // Rota para listar todos os alimentos
 app.get('/alimentos', (req, res) => {
-  Alimento.findAll()
+  // Adicionar { raw: true } para retornar objetos simples
+  Alimento.findAll({ raw: true })
     .then((alimentos) => {
+      // 'alimentos' agora será um array de objetos JavaScript simples
       res.render('alimentos', { alimentos });
     })
     .catch((err) => console.log(err));
