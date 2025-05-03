@@ -7,15 +7,21 @@
       <th>Nome</th>
       <th>Quantidade</th>
       <th>Descrição</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
-    {{#each alimentos}}
-      <tr>
-        <td>{{this.nome}}</td>
-        <td>{{this.quantidade}}</td>
-        <td>{{this.descricao}}</td>
-      </tr>
-    {{/each}}
+    {{#each alimentos}}  
+      <tr>
+        <td>{{this.nome}}</td>
+        <td>{{this.quantidade}}</td>
+        <td>{{this.descricao}}</td>
+        <td>
+                    <form action="/alimentos/delete/{{this.id}}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja deletar este alimento?');">Deletar</button>
+          </form>
+        </td>
+      </tr>
+    {{/each}} 
   </tbody>
 </table>

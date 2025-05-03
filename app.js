@@ -48,7 +48,35 @@ app.post('/add-alimento', (req, res) => {
     .then(() => res.redirect('/alimentos'))
     .catch((err) => console.log(err));
 });
+// Rota para deletar um alimento
+app.post('/alimentos/delete/:id', (req, res) => {
+  // Extrair o ID do parâmetro da URL
+  const alimentoId = req.params.id;
 
+  // Encontrar o alimento pelo ID
+  Alimento.findByPk(alimentoId)
+    .then((alimento) => {
+      // Verificar se o alimento foi encontrado
+      if (!alimento) {
+        console.log(`Alimento com ID ${alimentoId} não encontrado.`);
+        // Redirecionar de volta para a lista, talvez com uma mensagem de erro
+        return res.redirect('/alimentos');
+      }
+
+      // Deletar o alimento
+      return alimento.destroy();
+    })
+    .then(() => {
+      console.log(`Alimento com ID ${alimentoId} deletado com sucesso.`);
+      // Redirecionar de volta para a página da lista após deletar
+      res.redirect('/alimentos');
+    })
+    .catch((err) => {
+      console.log('Erro ao deletar alimento:', err);
+      // Em caso de erro, redirecionar de volta para a lista ou renderizar uma página de erro
+      res.redirect('/alimentos'); // Ou outra página de erro, se tiver
+    });
+});
 // Sincronizar banco e iniciar servidor
 sequelize.sync()
   .then(() => {
