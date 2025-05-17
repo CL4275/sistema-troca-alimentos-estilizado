@@ -1,13 +1,66 @@
+{{!-- views/layout/main.handlebars --}}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>{{title}}</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  {{!-- Você pode linkar seu estilo.css aqui se quiser adicionar CSS customizado --}}
+  <link rel="stylesheet" href="/css/estilo.css"> 
 </head>
 <body>
-  <div class="container mt-4">
-    {{{body}}}
-  </div>
+
+    {{!-- --- BARRA DE NAVEGAÇÃO BOOTSTRAP --- --}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Sistema Troca Alimentos</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto"> {{!-- ms-auto alinha à direita --}}
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/sobre">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/alimentos">Lista de Alimentos</a>
+            </li>
+
+            {{!-- Links que aparecem APENAS se NÃO ESTÁ LOGADO --}}
+            {{#unless isAuthenticated}}
+             <li class="nav-item">
+                <a class="nav-link" href="/cadastro">Cadastro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+            {{/unless}}
+
+            {{!-- Links que aparecem APENAS se ESTÁ LOGADO --}}
+            {{#if isAuthenticated}}
+               <li class="nav-item">
+                <a class="nav-link" href="/add-alimento">Adicionar Alimento</a>
+              </li>
+              {{!-- TODO: Adicionar link para "Meus Alimentos", Chat, etc. --}}
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            {{/if}}
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      {{{body}}}
+    </div>
+
+  {{!-- Link para o JS do Bootstrap --}}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

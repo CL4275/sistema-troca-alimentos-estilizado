@@ -1,0 +1,24 @@
+{{!-- views/home.handlebars --}}
+<div class="jumbotron text-center mt-4">
+    <h1 class="display-4">Bem-vindo ao Sistema de Troca de Alimentos!</h1>
+    <p class="lead">Ajude a reduzir o desperdício de alimentos trocando seus excedentes com outras pessoas.</p>
+    <hr class="my-4">
+    <p>Explore os alimentos disponíveis para troca ou cadastre os seus.</p>
+    {{!-- TODO: Adicionar links úteis, talvez condicionais se logado/não logado --}}
+    {{!-- Exemplo: --}}
+    {{#if isAuthenticated}}
+        <p>
+            <a class="btn btn-primary btn-lg" href="/alimentos" role="button">Ver Alimentos Disponíveis</a>
+            <a class="btn btn-success btn-lg" href="/add-alimento" role="button">Cadastrar Meu Alimento</a>
+        </p>
+    {{else}}
+        <p>
+            <a class="btn btn-primary btn-lg" href="/login" role="button">Entrar</a>
+            <a class="btn btn-secondary btn-lg" href="/cadastro" role="button">Cadastrar-se</a>
+        </p>
+    {{/if}}
+
+    <p class="mt-4">Saiba mais sobre o projeto na página <a href="/sobre">Sobre</a>.</p>
+</div>
+
+{{!-- Você pode adicionar mais conteúdo aqui --}}

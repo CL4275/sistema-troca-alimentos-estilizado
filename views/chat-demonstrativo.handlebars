@@ -1,0 +1,48 @@
+{{!-- views/chat-demonstrativo.handlebars --}}
+<div class="container mt-4">
+    <h1>Chat Demonstrativo</h1>
+    <p class="lead">Esta é uma simulação de uma conversa de chat para demonstração.</p>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <div class="chat-box" style="height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px;">
+                {{!-- Aqui vai a "conversa" estática --}}
+                <div class="message mb-2">
+                    <small><strong>Você:</strong> 16:30</small>
+                    <p class="mb-1">Olá! Tenho interesse no seu {{!-- TODO: Se ligar a alimento, mostrar nome aqui --}} Alimento X. Ainda está disponível?</p>
+                </div>
+                 <div class="message mb-2 text-end"> {{!-- text-end para alinhar à direita --}}
+                    <small>16:35 <strong>Fornecedor:</strong></small>
+                    <p class="mb-1 bg-primary text-white d-inline-block p-2 rounded">Olá! Sim, ainda está disponível!</p> {{!-- Fundo azul para a outra pessoa --}}
+                </div>
+                 <div class="message mb-2">
+                    <small><strong>Você:</strong> 16:40</small>
+                    <p class="mb-1">Ótimo! Onde posso retirar?</p>
+                </div>
+                 <div class="message mb-2 text-end">
+                    <small>16:45 <strong>Fornecedor:</strong></small>
+                    <p class="mb-1 bg-primary text-white d-inline-block p-2 rounded">Fica no endereço que está na descrição.</p>
+                </div>
+                 <div class="message mb-2">
+                    <small><strong>Você:</strong> 16:50</small>
+                    <p class="mb-1">Perfeito, posso passar amanhã?</p>
+                </div>
+                 <div class="message mb-2 text-end">
+                    <small>16:55 <strong>Fornecedor:</strong></small>
+                    <p class="mb-1 bg-primary text-white d-inline-block p-2 rounded">Combinado!</p>
+                </div>
+                {{!-- Adicione mais mensagens se quiser --}}
+            </div>
+
+            {{!-- Área para enviar nova mensagem (apenas visual, não funcional) --}}
+            <div class="input-group mt-3">
+                <input type="text" class="form-control" placeholder="Digite sua mensagem..." aria-label="Digite sua mensagem...">
+                <button class="btn btn-primary" type="button">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <a href="/alimentos" class="btn btn-secondary mt-3">Voltar para a Lista</a>
+     <a href="/" class="btn btn-secondary mt-3">Voltar para a Home</a>
+
+</div>

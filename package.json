@@ -10,9 +10,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
+    "bootstrap": "^5.3.6",
     "express": "^5.1.0",
     "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.1",
     "mysql2": "^3.14.1",
     "sequelize": "^6.37.7"
   }

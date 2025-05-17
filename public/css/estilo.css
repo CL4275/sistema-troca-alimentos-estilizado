@@ -1,0 +1,45 @@
+/* --- Estilos Específicos para a Tabela de Alimentos --- */
+
+/* Container principal das ações */
+.table-actions-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+/* Formulário de avaliação */
+.rating-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    height: 100%;
+}
+
+/* Input de avaliação */
+.rating-input {
+    width: 60px !important;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Botões compactos */
+.compact-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+/* Ajuste para células de ação */
+.action-cell {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+}
+
+/* Alinhamento vertical para conteúdo das células */
+.table tbody td {
+    vertical-align: middle;
+}

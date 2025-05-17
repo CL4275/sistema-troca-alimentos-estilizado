@@ -1,5 +1,8 @@
+{{!-- views/alimentos.handlebars --}}
 <h1>Lista de Alimentos</h1>
-<a href="/add-alimento" class="btn btn-primary mb-3">Adicionar Novo Alimento</a>
+{{#if isAuthenticated}}
+  <a href="/add-alimento" class="btn btn-primary mb-3">Adicionar Novo Alimento</a>
+{{/if}}
 
 <table class="table table-striped">
   <thead>
@@ -7,21 +10,66 @@
       <th>Nome</th>
       <th>Quantidade</th>
       <th>Descrição</th>
-      <th>Ações</th>
+      <th>Valor</th>
+      <th>Fornecedor</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Endereço</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th class="text-center">Avaliações</th>
+      <th class="text-center">Avaliar</th>
+      <th class="text-center">Ações</th>
     </tr>
   </thead>
   <tbody>
-    {{#each alimentos}}  
-      <tr>
-        <td>{{this.nome}}</td>
-        <td>{{this.quantidade}}</td>
-        <td>{{this.descricao}}</td>
-        <td>
-                    <form action="/alimentos/delete/{{this.id}}" method="POST" style="display:inline;">
-            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja deletar este alimento?');">Deletar</button>
-          </form>
-        </td>
-      </tr>
-    {{/each}} 
+    {{#each alimentos}}
+      <tr>
+        <td>{{this.dataValues.nome}}</td>
+        <td>{{this.dataValues.quantidade}}</td>
+        <td>{{this.dataValues.descricao}}</td>
+        <td>{{this.dataValues.valor}}</td>
+        <td>{{this.dataValues.fornecedor}}</td>
+        <td>{{this.dataValues.email}}</td>
+        <td>{{this.dataValues.telefone}}</td>
+        <td>{{this.dataValues.address}}</td>
+        <td>{{this.dataValues.latitude}}</td>
+        <td>{{this.dataValues.longitude}}</td>
+        <td class="text-center">
+          {{#if this.ratings}}
+            {{this.ratings.length}}
+          {{else}}
+            0
+          {{/if}}
+        </td>
+        
+        {{!-- Coluna Avaliar --}}
+        <td class="action-cell text-center">
+          {{#if ../isAuthenticated}}
+            <form action="/rate-alimento" method="POST" class="rating-form">
+              <input type="hidden" name="alimentoId" value="{{this.dataValues.id}}">
+              <input type="number" name="ratingValue" min="1" max="5" value="5" class="form-control form-control-sm rating-input">
+              <button type="submit" class="btn btn-success btn-sm compact-btn">Avaliar</button>
+            </form>
+          {{else}}
+            <small class="text-muted">Faça login para avaliar</small>
+          {{/if}}
+        </td>
+        
+        {{!-- Coluna Ações --}}
+        <td class="action-cell text-center">
+          {{#if ../isAuthenticated}}
+            <div class="table-actions-container">
+              <form action="/alimentos/delete/{{this.dataValues.id}}" method="POST" class="d-inline">
+                <button type="submit" class="btn btn-danger btn-sm compact-btn" onclick="return confirm('Tem certeza que deseja deletar este alimento?');">
+                  Deletar
+                </button>
+              </form>
+              <a href="/chat-demonstrativo" class="btn btn-info btn-sm compact-btn">Chat</a>
+            </div>
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
   </tbody>
 </table>

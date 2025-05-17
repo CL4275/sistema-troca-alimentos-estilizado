@@ -1,20 +1,75 @@
-<h1>Adicionar Alimento</h1>
-<form action="/add-alimento" method="POST">
-  <div class="mb-3">
-    <label for="nome" class="form-label">Nome do alimento</label>
-    <input type="text" class="form-control" name="nome" id="nome" required>
-  </div>
+{{!-- views/add-alimento.handlebars --}}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card mt-5">
+            <div class="card-header">
+                <h2>Adicionar Novo Alimento</h2>
+            </div>
+            <div class="card-body">
+                {{!-- TODO: Adicionar exibição de mensagens de erro/sucesso aqui --}}
 
-  <div class="mb-3">
-    <label for="quantidade" class="form-label">Quantidade</label>
-    <input type="number" class="form-control" name="quantidade" id="quantidade" required>
-  </div>
+                <form action="/add-alimento" method="POST">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome do Alimento:</label>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantidade" class="form-label">Quantidade (ex: 1kg, 5 unidades):</label>
+                        <input type="text" class="form-control" id="quantidade" name="quantidade" required>
+                    </div>
+                     <div class="mb-3">
+                        <label for="valor" class="form-label">Valor (se aplicável):</label>
+                        <input type="text" class="form-control" id="valor" name="valor">
+                         {{!-- Considere type="number" step="0.01" para valores monetários --}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição:</label>
+                        <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+                    </div>
 
-  <div class="mb-3">
-    <label for="descricao" class="form-label">Descrição</label>
-    <textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
-  </div>
+                    <hr> {{!-- Separador visual --}}
 
-  <button type="submit" class="btn btn-success">Adicionar</button>
-  <a href="/alimentos" class="btn btn-secondary">Voltar</a>
-</form>
+                    <h4>Informações do Fornecedor/Contato</h4>
+                    <div class="mb-3">
+                        <label for="fornecedor" class="form-label">Nome do Fornecedor:</label>
+                        <input type="text" class="form-control" id="fornecedor" name="fornecedor">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email do Fornecedor:</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefone" class="form-label">Telefone do Fornecedor:</label>
+                        <input type="text" class="form-control" id="telefone" name="telefone">
+                    </div>
+
+                     <hr> {{!-- Separador visual --}}
+
+                    <h4>Informações de Localização</h4>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Endereço:</label>
+                        <input type="text" class="form-control" id="address" name="address">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="latitude" class="form-label">Latitude:</label>
+                                <input type="text" class="form-control" id="latitude" name="latitude">
+                                {{!-- Considere type="number" step="any" para valores numéricos --}}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="longitude" class="form-label">Longitude:</label>
+                                <input type="text" class="form-control" id="longitude" name="longitude">
+                                 {{!-- Considere type="number" step="any" para valores numéricos --}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-3">Cadastrar Alimento</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
