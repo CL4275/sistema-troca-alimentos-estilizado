@@ -1,24 +1,37 @@
-{{!-- views/home.handlebars --}}
-<div class="jumbotron text-center mt-4">
-    <h1 class="display-4">Bem-vindo ao Sistema de Troca de Alimentos!</h1>
-    <p class="lead">Ajude a reduzir o desperdício de alimentos trocando seus excedentes com outras pessoas.</p>
-    <hr class="my-4">
-    <p>Explore os alimentos disponíveis para troca ou cadastre os seus.</p>
-    {{!-- TODO: Adicionar links úteis, talvez condicionais se logado/não logado --}}
-    {{!-- Exemplo: --}}
-    {{#if isAuthenticated}}
-        <p>
-            <a class="btn btn-primary btn-lg" href="/alimentos" role="button">Ver Alimentos Disponíveis</a>
-            <a class="btn btn-success btn-lg" href="/add-alimento" role="button">Cadastrar Meu Alimento</a>
-        </p>
-    {{else}}
-        <p>
-            <a class="btn btn-primary btn-lg" href="/login" role="button">Entrar</a>
-            <a class="btn btn-secondary btn-lg" href="/cadastro" role="button">Cadastrar-se</a>
-        </p>
-    {{/if}}
-
-    <p class="mt-4">Saiba mais sobre o projeto na página <a href="/sobre">Sobre</a>.</p>
+<div class="hero bg-light p-5 rounded text-center mb-4 shadow-sm">
+  <h1 class="display-5 fw-bold text-primary">Sistema de Troca de Alimentos</h1>
+  <p class="lead mt-3">
+    Combata o desperdício, ajude quem precisa e fortaleça sua comunidade. <br>
+    Nosso sistema conecta pessoas que têm alimentos disponíveis com quem mais precisa.
+  </p>
+  <a href="/alimentos" class="btn btn-primary btn-lg mt-3">Ver Lista de Alimentos</a>
 </div>
 
-{{!-- Você pode adicionar mais conteúdo aqui --}}
+<div class="row text-center">
+  <div class="col-md-4 mb-4">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title text-success">Compartilhe</h5>
+        <p class="card-text">Cadastre alimentos que você não vai usar. Uma simples ação pode alimentar uma família inteira.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title text-warning">Encontre</h5>
+        <p class="card-text">Navegue pela lista de alimentos disponíveis e encontre itens perto de você.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title text-info">Avalie</h5>
+        <p class="card-text">Ajude a melhorar a experiência avaliando os alimentos recebidos e contribuindo com feedbacks.</p>
+      </div>
+    </div>
+  </div>
+</div>

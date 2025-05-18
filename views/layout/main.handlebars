@@ -1,66 +1,92 @@
-{{!-- views/layout/main.handlebars --}}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>{{title}}</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  {{!-- Você pode linkar seu estilo.css aqui se quiser adicionar CSS customizado --}}
-  <link rel="stylesheet" href="/css/estilo.css"> 
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Fonte moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS Customizado -->
+  <link rel="stylesheet" href="/css/estilo.css">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #dee2e6;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    .navbar-brand {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #0d6efd;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: #333 !important;
+      margin-left: 1rem;
+    }
+
+    .nav-link:hover {
+      color: #0d6efd !important;
+    }
+
+    .container {
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
 
-    {{!-- --- BARRA DE NAVEGAÇÃO BOOTSTRAP --- --}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Sistema Troca Alimentos</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto"> {{!-- ms-auto alinha à direita --}}
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-             <li class="nav-item">
-              <a class="nav-link" href="/sobre">Sobre</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/alimentos">Lista de Alimentos</a>
-            </li>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Sistema Troca Alimentos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            {{!-- Links que aparecem APENAS se NÃO ESTÁ LOGADO --}}
-            {{#unless isAuthenticated}}
-             <li class="nav-item">
-                <a class="nav-link" href="/cadastro">Cadastro</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-            {{/unless}}
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="/alimentos">Lista de Alimentos</a></li>
 
-            {{!-- Links que aparecem APENAS se ESTÁ LOGADO --}}
-            {{#if isAuthenticated}}
-               <li class="nav-item">
-                <a class="nav-link" href="/add-alimento">Adicionar Alimento</a>
-              </li>
-              {{!-- TODO: Adicionar link para "Meus Alimentos", Chat, etc. --}}
-              <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
-              </li>
-            {{/if}}
+          {{#unless isAuthenticated}}
+            <li class="nav-item"><a class="nav-link" href="/cadastro">Cadastro</a></li>
+            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+          {{/unless}}
 
-          </ul>
-        </div>
+          {{#if isAuthenticated}}
+            <li class="nav-item"><a class="nav-link" href="/add-alimento">Adicionar Alimento</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+          {{/if}}
+        </ul>
       </div>
-    </nav>
-
-    <div class="container mt-4">
-      {{{body}}}
     </div>
+  </nav>
 
-  {{!-- Link para o JS do Bootstrap --}}
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="container">
+    {{{body}}}
+  </div>
 
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <footer class="footer mt-auto py-3 bg-light text-center">
+  <div class="container">
+    <small class="text-muted">&copy; 2025 Sistema Troca Alimentos</small>
+  </div>
+</footer>
 </body>
 </html>

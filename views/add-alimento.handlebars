@@ -1,75 +1,61 @@
-{{!-- views/add-alimento.handlebars --}}
+<!-- views/add-alimento.handlebars -->
 <div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card mt-5">
-            <div class="card-header">
-                <h2>Adicionar Novo Alimento</h2>
-            </div>
-            <div class="card-body">
-                {{!-- TODO: Adicionar exibição de mensagens de erro/sucesso aqui --}}
+  <div class="col-md-8">
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <h2 class="mb-4 text-center">Adicionar Alimento</h2>
+
+        {{#if error}}
+          <div class="alert alert-danger">{{error}}</div>
+        {{/if}}
+
+        <form action="/add-alimento" method="POST">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome do Alimento</label>
+            <input type="text" id="nome" name="nome" class="form-control" required>
+          </div>
+          
+          <div class="mb-3">
+            <label for="quantidade" class="form-label">Quantidade</label>
+            <input type="number" id="quantidade" name="quantidade" class="form-control" required min="0"> {{!-- Use type="number" e name="quantidade" --}}
+          </div>
+
+          <div class="mb-3">
+            <label for="valor" class="form-label">Valor Estimado (R$)</label>
+            <input type="number" id="valor" name="valor" step="0.01" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <textarea id="descricao" name="descricao" class="form-control" rows="3" required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="fornecedor" class="form-label">Nome do Fornecedor</label>
+            <input type="text" id="fornecedor" name="fornecedor" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+
+          <div class="mb-4">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="text" id="telefone" name="telefone" class="form-control" required>
+          </div>
 
                 <form action="/add-alimento" method="POST">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">Nome do Alimento:</label>
-                        <input type="text" class="form-control" id="nome" name="nome" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="quantidade" class="form-label">Quantidade (ex: 1kg, 5 unidades):</label>
-                        <input type="text" class="form-control" id="quantidade" name="quantidade" required>
-                    </div>
-                     <div class="mb-3">
-                        <label for="valor" class="form-label">Valor (se aplicável):</label>
-                        <input type="text" class="form-control" id="valor" name="valor">
-                         {{!-- Considere type="number" step="0.01" para valores monetários --}}
-                    </div>
-                    <div class="mb-3">
-                        <label for="descricao" class="form-label">Descrição:</label>
-                        <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
-                    </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Endereço</label>
+            <input type="text" id="address" name="address" class="form-control" required> {{!-- Campo para o endereço --}}
+          </div>
 
-                    <hr> {{!-- Separador visual --}}
-
-                    <h4>Informações do Fornecedor/Contato</h4>
-                    <div class="mb-3">
-                        <label for="fornecedor" class="form-label">Nome do Fornecedor:</label>
-                        <input type="text" class="form-control" id="fornecedor" name="fornecedor">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email do Fornecedor:</label>
-                        <input type="email" class="form-control" id="email" name="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefone" class="form-label">Telefone do Fornecedor:</label>
-                        <input type="text" class="form-control" id="telefone" name="telefone">
-                    </div>
-
-                     <hr> {{!-- Separador visual --}}
-
-                    <h4>Informações de Localização</h4>
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Endereço:</label>
-                        <input type="text" class="form-control" id="address" name="address">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="latitude" class="form-label">Latitude:</label>
-                                <input type="text" class="form-control" id="latitude" name="latitude">
-                                {{!-- Considere type="number" step="any" para valores numéricos --}}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="longitude" class="form-label">Longitude:</label>
-                                <input type="text" class="form-control" id="longitude" name="longitude">
-                                 {{!-- Considere type="number" step="any" para valores numéricos --}}
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary mt-3">Cadastrar Alimento</button>
-                </form>
-            </div>
-        </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Cadastrar Alimento</button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

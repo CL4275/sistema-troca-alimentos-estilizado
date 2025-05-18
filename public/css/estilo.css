@@ -1,45 +1,90 @@
-/* --- Estilos Específicos para a Tabela de Alimentos --- */
-
-/* Container principal das ações */
-.table-actions-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    height: 100%;
+/* Fonte e Reset */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: #212529;
 }
 
-/* Formulário de avaliação */
-.rating-form {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0;
-    height: 100%;
-}
-
-/* Input de avaliação */
-.rating-input {
-    width: 60px !important;
-    min-width: 60px;
-    text-align: center;
-}
-
-/* Botões compactos */
+/* Botões compactos para tabelas */
 .compact-btn {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    white-space: nowrap;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  margin: 2px;
 }
 
-/* Ajuste para células de ação */
-.action-cell {
-    padding-top: 0.75rem !important;
-    padding-bottom: 0.75rem !important;
+/* Formulários */
+input.form-control,
+textarea.form-control,
+select.form-control {
+  border-radius: 0.375rem;
+  box-shadow: none;
+  border: 1px solid #ced4da;
+  font-size: 0.95rem;
 }
 
-/* Alinhamento vertical para conteúdo das células */
-.table tbody td {
-    vertical-align: middle;
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Tabela */
+.table th,
+.table td {
+  vertical-align: middle;
+  font-size: 0.92rem;
+}
+
+.table thead th {
+  background-color: #e9ecef;
+  font-weight: 600;
+}
+
+.table-actions-container {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Rating form */
+.rating-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+.rating-input {
+  width: 60px;
+  text-align: center;
+}
+
+/* Cards e Containers */
+.card {
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 0.75rem;
+}
+
+.card-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Links da navbar */
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+  color: #0d6efd !important;
+}
+
+/* Links padrão */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
